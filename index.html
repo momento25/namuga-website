@@ -1,53 +1,164 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="부모님과 조부모님의 삶의 경험을 음성으로 기록하고 가족과 함께 간직하는 가족 기억 플랫폼">
-  <title>나무가 나뭇가지에게</title>
-  <link rel="stylesheet" href="style.css">
+  <!-- @include:head -->
+  <title>나무가 나뭇가지에게 — 부모님의 이야기를 목소리로</title>
+  <meta name="description" content="매일 도착하는 질문에 부모님이 목소리로 답하면, 글로 저장되어 가족에게 전해집니다. 오늘의 질문 하나가 언젠가 가장 소중한 기록이 됩니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="나무가 나뭇가지에게">
+  <meta property="og:title" content="나무가 나뭇가지에게 — 부모님의 이야기를 목소리로">
+  <meta property="og:description" content="매일 하나의 질문에 목소리로 답하면 글로 저장되어 가족에게 전해집니다.">
+  <meta property="og:url" content="{{SITE_URL}}/">
+  <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
 
-  <header class="site-header">
-    <div class="wrap">
-      <span class="site-name">나무가 나뭇가지에게</span>
-      <nav class="site-nav">
-        <a href="support/">지원</a>
-        <a href="privacy/">개인정보처리방침</a>
-      </nav>
-    </div>
-  </header>
+<!-- @include:header -->
 
-  <main class="home-main">
-    <div class="wrap">
-      <p class="home-tagline">사라지기 전에 기록해야 할<br>이야기들이 있습니다.</p>
-      <p class="home-desc">
-        부모님과 조부모님의 삶의 경험을<br>
-        음성으로 기록하고 가족과 함께 간직하는<br>
-        가족 기억 플랫폼입니다.
-      </p>
-      <div class="status-pill">
-        <span class="status-dot"></span>
-        앱 출시 준비 중입니다
-      </div>
-      <div class="contact-row">
-        문의&nbsp;&nbsp;<a href="mailto:contact@namuga.app">contact@namuga.app</a>
-      </div>
-    </div>
-  </main>
+<main>
 
-  <footer class="site-footer">
-    <div class="wrap">
-      <nav class="footer-nav">
-        <a href="privacy/">개인정보처리방침</a>
-        <a href="terms/">이용약관</a>
-        <a href="support/">지원</a>
-      </nav>
-      <p class="footer-copy">&copy; 2026 나무가 나뭇가지에게</p>
-      <p class="footer-operator">Operated by Momento House Co.,Ltd.</p>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div>
+          <span class="hero-eyebrow">부모님의 이야기를 목소리로</span>
+          <h1 class="hero-title">나무가<br>나뭇가지에게</h1>
+          <p class="hero-lead">매일 하나의 질문이 부모님께 도착합니다. 목소리로 답하면 글로 저장되어, 언젠가 가장 듣고 싶어질 이야기가 가족에게 남습니다.</p>
+          <!-- @include:download-buttons -->
+          <p class="hero-note">iOS · Android 무료 · 첫 질문은 오늘 바로</p>
+        </div>
+        <div>
+          <div class="hero-visual">
+            <!-- @image:hero.jpg,alt=나무가 나뭇가지에게 앱 이미지 -->
+            <div class="hero-float-card" role="note">
+              <p class="float-quote">&ldquo;어릴 적 살던 집은 어떤 모습이었어요?&rdquo;</p>
+              <span class="float-meta">오늘의 질문 · 목소리로 답하기</span>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </footer>
+  </section>
+
+  <section class="section section-band" id="how">
+    <div class="container">
+      <div class="section-head-center">
+        <span class="section-label">작동 방식</span>
+        <h2 class="section-title">네 단계면 충분합니다</h2>
+        <p class="section-lead">복잡한 설정도, 어려운 조작도 없습니다. 질문에 답하는 것만으로 이야기가 쌓입니다.</p>
+      </div>
+      <div class="how-grid">
+        <div class="how-card">
+          <span class="how-card-num" aria-hidden="true">01</span>
+          <span class="how-card-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          </span>
+          <h3>질문 도착</h3>
+          <p>매일 대답하기 쉬운 질문 하나가 부모님께 도착합니다.</p>
+        </div>
+        <div class="how-card">
+          <span class="how-card-num" aria-hidden="true">02</span>
+          <span class="how-card-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+          </span>
+          <h3>목소리 답변</h3>
+          <p>떠오르는 대로, 편하게 목소리로 이야기를 남깁니다.</p>
+        </div>
+        <div class="how-card">
+          <span class="how-card-num" aria-hidden="true">03</span>
+          <span class="how-card-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="8" y1="13" x2="16" y2="13"/><line x1="8" y1="17" x2="14" y2="17"/></svg>
+          </span>
+          <h3>글로 저장</h3>
+          <p>목소리는 자동으로 글이 되어 한 편의 이야기로 정리됩니다.</p>
+        </div>
+        <div class="how-card">
+          <span class="how-card-num" aria-hidden="true">04</span>
+          <span class="how-card-icon" aria-hidden="true">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 3a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/><path d="M21 12a3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3z"/><path d="M12 21a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3z"/><path d="M3 12a3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3z"/></svg>
+          </span>
+          <h3>꽃 반응</h3>
+          <p>가족이 꽃을 남겨 "잘 들었어요"라는 마음을 전합니다.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head-center">
+        <span class="section-label">두 사람을 위한 서비스</span>
+        <h2 class="section-title">이야기를 남기는 사람과<br>이야기를 받는 사람</h2>
+      </div>
+      <div class="value-grid">
+        <article class="value-card">
+          <div class="value-card-image">
+            <!-- @image:value-namu.jpg,alt=이야기를 남기는 부모님 -->
+          </div>
+          <div class="value-card-body">
+            <span class="value-badge">나무에게</span>
+            <h3>&ldquo;들려주고 싶었던 이야기를,<br>부담 없이&rdquo;</h3>
+            <ul class="value-list">
+              <li>글씨 대신 목소리로, 말하듯 편하게 남깁니다.</li>
+              <li>매일 하나의 질문이 기억의 실마리를 열어줍니다.</li>
+              <li>가족이 남긴 꽃 반응이 이야기를 이어갈 힘이 됩니다.</li>
+            </ul>
+          </div>
+        </article>
+        <article class="value-card">
+          <div class="value-card-image">
+            <!-- @image:value-gaji.jpg,alt=이야기를 받는 가족 -->
+          </div>
+          <div class="value-card-body">
+            <span class="value-badge">나뭇가지에게</span>
+            <h3>&ldquo;몰랐던 부모님을,<br>다시 만나다&rdquo;</h3>
+            <ul class="value-list">
+              <li>바쁜 일상 속에서도 부모님의 이야기가 도착합니다.</li>
+              <li>글로 남아, 언제든 다시 꺼내볼 수 있습니다.</li>
+              <li>가족이 함께 읽고 반응하며 이야기를 나눕니다.</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-band" id="faq">
+    <div class="container">
+      <div class="section-head-center">
+        <span class="section-label">자주 묻는 질문</span>
+        <h2 class="section-title">궁금한 점이 있으신가요?</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>부모님이 앱 사용을 어려워하시면 어떡하나요?<span class="faq-toggle" aria-hidden="true">+</span></summary>
+          <div class="faq-body">화면은 큰 버튼과 큰 글씨로 되어 있습니다. 녹음 버튼을 누르고 말한 뒤 다시 누르면 끝입니다. 복잡한 메뉴나 설정은 없습니다.</div>
+        </details>
+        <details class="faq-item">
+          <summary>목소리는 어떻게 글이 되나요?<span class="faq-toggle" aria-hidden="true">+</span></summary>
+          <div class="faq-body">녹음된 답변은 자동으로 텍스트로 변환되어 한 편의 이야기로 정리됩니다.</div>
+        </details>
+        <details class="faq-item">
+          <summary>연결 코드가 뭔가요?<span class="faq-toggle" aria-hidden="true">+</span></summary>
+          <div class="faq-body">부모님과 가족을 이어주는 코드입니다. 가족이 코드를 보내고 부모님이 입력하면, 부모님의 이야기가 가족에게 우선적으로 보입니다.</div>
+        </details>
+        <details class="faq-item">
+          <summary>이야기는 누가 볼 수 있나요?<span class="faq-toggle" aria-hidden="true">+</span></summary>
+          <div class="faq-body">이야기는 닉네임으로 공유되며, 이름이나 연락처 같은 개인정보는 수집하지 않습니다. 연결된 가족은 부모님의 이야기를 가장 먼저 받아볼 수 있습니다.</div>
+        </details>
+        <details class="faq-item">
+          <summary>요금은 어떻게 되나요?<span class="faq-toggle" aria-hidden="true">+</span></summary>
+          <div class="faq-body">앱은 무료로 사용할 수 있습니다.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- @include:cta-download -->
+
+</main>
+
+<!-- @include:footer -->
 
 </body>
 </html>
