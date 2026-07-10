@@ -70,8 +70,18 @@ function relRoot(_destRel) {
   return '/';
 }
 
+// PostHog 스니펫은 posthog:start ~ posthog:end 마커 사이에 위치.
+// 키가 없으면 블록 자체를 제거(로컬 개발 안전). 있으면 {{POSTHOG_KEY}} 치환.
+const POSTHOG_BLOCK_RE = /[ \t]*<!--\s*posthog:start\s*-->[\s\S]*?<!--\s*posthog:end\s*-->\s*/g;
+
+function applyPosthog(html) {
+  const key = process.env.POSTHOG_KEY;
+  if (!key) return html.replace(POSTHOG_BLOCK_RE, '');
+  return html.replaceAll('{{POSTHOG_KEY}}', key);
+}
+
 function applyVars(html, root) {
-  return html
+  return applyPosthog(html)
     .replaceAll('{{ROOT}}', root)
     .replaceAll('{{SITE_EMAIL}}', site.email)
     .replaceAll('{{APP_STORE_URL}}', site.appStoreUrl)
