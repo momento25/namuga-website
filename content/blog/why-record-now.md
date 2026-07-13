@@ -1,6 +1,6 @@
 ---
 title: 왜 지금 기록해야 할까
-description: 부모님의 이야기는 늘 &ldquo;나중에&rdquo;로 미뤄집니다. 그 나중이 왜 자꾸 사라지는지, 그리고 오늘 하나만 남기면 무엇이 달라지는지에 대해.
+description: 부모님의 이야기는 늘 “나중에”로 미뤄집니다. 그 나중이 왜 자꾸 사라지는지, 그리고 오늘 하나만 남기면 무엇이 달라지는지에 대해.
 date: 2026-06-18
 category: essay
 slug: why-record-now
