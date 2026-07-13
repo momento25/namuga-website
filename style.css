@@ -130,6 +130,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
 .btn-outline:hover { border-color: var(--color-primary); color: var(--color-primary); }
 
 .btn-sm { padding: 10px 20px; font-size: 14px; }
+.btn-lg { padding: 16px 32px; font-size: 16px; }
 
 /* Download button pair */
 .download-buttons {
