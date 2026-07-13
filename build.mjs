@@ -192,7 +192,7 @@ function formatDate(iso) {
   return `${d.getFullYear()}년 ${d.getMonth() + 1}월 ${d.getDate()}일`;
 }
 
-async function renderPage({ dest, title, description, bodyHtml, extraHead = '', canonical }) {
+async function renderPage({ dest, title, description, bodyHtml, extraHead = '', canonical, ogType = 'website' }) {
   const root = relRoot(dest);
   const template = `<!DOCTYPE html>
 <html lang="ko">
@@ -200,7 +200,7 @@ async function renderPage({ dest, title, description, bodyHtml, extraHead = '', 
   <!-- @include:head -->
   <title>${escapeHtml(title)}</title>
   <meta name="description" content="${escapeHtml(description)}">
-  <meta property="og:type" content="website">
+  <meta property="og:type" content="${escapeHtml(ogType)}">
   <meta property="og:site_name" content="${escapeHtml(site.name)}">
   <meta property="og:title" content="${escapeHtml(title)}">
   <meta property="og:description" content="${escapeHtml(description)}">
@@ -320,7 +320,6 @@ async function buildBlogPost(post) {
 `;
 
   const extraHead = `
-  <meta property="og:type" content="article">
   <meta property="article:published_time" content="${escapeHtml(post.date)}">
   ${(post.keywords || []).map((k) => `<meta property="article:tag" content="${escapeHtml(k)}">`).join('\n')}
   <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
@@ -331,6 +330,7 @@ async function buildBlogPost(post) {
     title: `${post.title} — 나무가 나뭇가지에게`,
     description: post.description,
     canonical: `${site.url}/blog/${post.slug}/`,
+    ogType: 'article',
     bodyHtml: body,
     extraHead,
   });
