@@ -338,11 +338,7 @@ async function buildBlogPost(post) {
         ${html}
       </div>
       <div class="article-cta">
-        <div class="cta-block">
-          <h2>부모님의 이야기, 오늘 시작해보세요</h2>
-          <p>완벽한 순간을 기다릴 필요는 없습니다. 오늘의 질문 하나가 언젠가 가장 소중한 기록이 됩니다.</p>
-          <!-- @include:download-buttons-on-dark -->
-        </div>
+        <!-- @include:cta-notify -->
       </div>
     </div>
   </article>
