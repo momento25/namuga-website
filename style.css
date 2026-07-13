@@ -197,18 +197,6 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
 }
 .brand:hover { text-decoration: none; opacity: 0.85; }
 
-.brand-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: var(--color-primary);
-  color: var(--color-primary-fg);
-  flex-shrink: 0;
-}
-
 .nav-desktop {
   display: none;
   align-items: center;
