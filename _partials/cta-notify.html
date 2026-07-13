@@ -1,0 +1,22 @@
+<section class="section" id="download">
+  <div class="container">
+    <div class="cta-block">
+      <h2>앱 출시를 가장 먼저 알려드릴게요</h2>
+      <p>준비되는 대로 소식을 이메일로 전해드릴게요.</p>
+      <form class="notify-form" data-notify-form novalidate>
+        <div class="notify-input-row">
+          <label class="sr-only" for="notify-email">이메일</label>
+          <input class="notify-input" id="notify-email" type="email" name="email"
+                 autocomplete="email" placeholder="your@email.com" required>
+          <button class="notify-submit" type="submit" data-notify-submit>알림 신청</button>
+        </div>
+        <label class="notify-consent">
+          <input type="checkbox" name="consent" required>
+          <span>출시 알림 이메일 수신에 동의합니다.
+            <a href="{{ROOT}}privacy/">개인정보처리방침 보기</a></span>
+        </label>
+        <p class="notify-status" data-notify-status role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
