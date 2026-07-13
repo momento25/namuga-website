@@ -958,3 +958,99 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
   position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
   overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
 }
+
+/* =========================================================
+   Notify form (launch signup CTA)
+   ========================================================= */
+
+.notify-form {
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.notify-input-row {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+@media (min-width: 560px) {
+  .notify-input-row { flex-direction: row; }
+}
+
+.notify-input {
+  flex: 1;
+  min-width: 0;
+  padding: 14px 20px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text);
+  font: inherit;
+  font-size: 15px;
+  line-height: 1.4;
+}
+.notify-input::placeholder { color: var(--color-text-muted); }
+.notify-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-primary) 20%, transparent);
+}
+
+.notify-submit {
+  padding: 14px 28px;
+  border-radius: var(--radius-pill);
+  background: var(--color-text);
+  color: var(--color-primary-fg);
+  border: none;
+  font-weight: 700;
+  font-size: 15px;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+}
+.notify-submit:hover:not(:disabled) { opacity: 0.9; }
+.notify-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.notify-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 16px;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--color-primary-fg) 88%, transparent);
+  text-align: left;
+}
+.notify-consent input[type="checkbox"] {
+  flex-shrink: 0;
+  margin-top: 3px;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-primary-fg);
+}
+.notify-consent a {
+  color: var(--color-primary-fg);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.notify-status {
+  min-height: 1.2em;
+  margin-top: 12px;
+  font-size: 13.5px;
+  color: color-mix(in srgb, var(--color-primary-fg) 85%, transparent);
+  text-align: left;
+}
+.notify-status.is-error {
+  color: #FFD9C4;
+}
+
+.notify-success {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--color-primary-fg);
+}
+.notify-success p { font-size: 15px; font-weight: 400; opacity: 0.9; margin-top: 8px; }
