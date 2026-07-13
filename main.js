@@ -10,20 +10,6 @@ document.querySelectorAll('.nav-toggle').forEach((btn) => {
   });
 });
 
-// Blog category filter
-const filterButtons = document.querySelectorAll('[data-category-filter]');
-if (filterButtons.length) {
-  filterButtons.forEach((btn) => {
-    btn.addEventListener('click', () => {
-      const cat = btn.dataset.categoryFilter;
-      filterButtons.forEach((b) => b.classList.toggle('is-active', b === btn));
-      document.querySelectorAll('[data-post-card]').forEach((card) => {
-        card.hidden = cat !== 'all' && card.dataset.category !== cat;
-      });
-    });
-  });
-}
-
 // Launch notify form
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

@@ -8,7 +8,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import matter from 'gray-matter';
 import { marked } from 'marked';
-import { site, categories } from './site.config.js';
+import { site } from './site.config.js';
 
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(ROOT, 'dist');
@@ -226,38 +226,23 @@ ${bodyHtml}
   await fs.writeFile(outPath, html);
 }
 
-function categoryPill(cat) {
-  const c = categories[cat] || { label: cat };
-  return `<span class="cat-badge">${escapeHtml(c.label)}</span>`;
-}
-
-function categoryEmoji(cat) {
-  return (categories[cat] || {}).emoji || '🌿';
-}
-
 function postThumbHtml(post) {
   if (post.thumbnail && existsSync(path.join(IMAGES_DIR, post.thumbnail))) {
     return `<img src="{{ROOT}}images/${post.thumbnail}" alt="${escapeHtml(post.title)}" loading="lazy">`;
   }
-  return `<div class="image-placeholder" role="img" aria-label="${escapeHtml(post.title)}"><span aria-hidden="true">${categoryEmoji(post.category)}</span></div>`;
+  return `<div class="image-placeholder" role="img" aria-label="${escapeHtml(post.title)}"><span aria-hidden="true">🌿</span></div>`;
 }
 
 async function buildBlogIndex(posts) {
-  const filterButtons = [
-    { id: 'all', label: '전체' },
-    ...Object.entries(categories).map(([id, c]) => ({ id, label: c.label })),
-  ];
-
   const cards = posts
     .map(
       (p) => `
-    <article class="post-card" data-post-card data-category="${escapeHtml(p.category)}">
+    <article class="post-card">
       <a class="post-card-thumb" href="{{ROOT}}blog/${escapeHtml(p.slug)}/" aria-hidden="true" tabindex="-1">
         ${postThumbHtml(p)}
       </a>
       <div class="post-card-body">
         <div class="post-card-meta">
-          ${categoryPill(p.category)}
           <span class="post-date">${escapeHtml(formatDate(p.date))}</span>
         </div>
         <h2><a href="{{ROOT}}blog/${escapeHtml(p.slug)}/">${escapeHtml(p.title)}</a></h2>
@@ -268,12 +253,6 @@ async function buildBlogIndex(posts) {
     )
     .join('\n');
 
-  const filters = filterButtons
-    .map(
-      (b, i) => `<button type="button" class="filter-pill${i === 0 ? ' is-active' : ''}" data-category-filter="${escapeHtml(b.id)}">${escapeHtml(b.label)}</button>`,
-    )
-    .join('\n');
-
   const body = `
 <main>
   <section class="blog-hero">
@@ -281,9 +260,6 @@ async function buildBlogIndex(posts) {
       <span class="section-label">블로그</span>
       <h1>이야기를 남기는 마음</h1>
       <p class="section-lead">부모님과 어떻게 이야기를 시작할지, 어떤 질문이 좋을지 고민된다면. 먼저 시작한 가족들의 이야기와 안내를 모았습니다.</p>
-      <div class="blog-filters" role="tablist" aria-label="카테고리">
-        ${filters}
-      </div>
     </div>
   </section>
   <section>
@@ -308,7 +284,6 @@ async function buildBlogIndex(posts) {
 async function buildBlogPost(post) {
   const html = marked.parse(post.content);
   const minutes = readMinutes(post.content);
-  const catLabel = (categories[post.category] || {}).label || post.category;
 
   const jsonLd = {
     '@context': 'https://schema.org',
@@ -328,7 +303,6 @@ async function buildBlogPost(post) {
     <div class="container-narrow">
       <a class="article-back" href="{{ROOT}}blog/">← 블로그로 돌아가기</a>
       <div class="article-meta">
-        ${categoryPill(post.category)}
         <span>${escapeHtml(formatDate(post.date))}</span>
         <span aria-hidden="true">·</span>
         <span>${minutes}분 읽기</span>
@@ -348,7 +322,6 @@ async function buildBlogPost(post) {
   const extraHead = `
   <meta property="og:type" content="article">
   <meta property="article:published_time" content="${escapeHtml(post.date)}">
-  <meta property="article:section" content="${escapeHtml(catLabel)}">
   ${(post.keywords || []).map((k) => `<meta property="article:tag" content="${escapeHtml(k)}">`).join('\n')}
   <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
   `;

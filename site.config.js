@@ -8,9 +8,3 @@ export const site = {
   locale: 'ko_KR',
 };
 
-export const categories = {
-  guide:  { label: '질문 가이드', emoji: '📝' },
-  story:  { label: '이야기',     emoji: '🌿' },
-  essay:  { label: '에세이',     emoji: '✍️' },
-  wisdom: { label: '인생 조언',   emoji: '🌸' },
-};
