@@ -1,5 +1,5 @@
 // Vercel Serverless Function: POST /api/subscribe
-// Adds email to Stibee mailing list.
+// Adds email to MailerLite subscriber group.
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -28,8 +28,8 @@ export default async function handler(req, res) {
     return send(res, 405, { status: 'method_not_allowed' });
   }
 
-  const { STIBEE_API_KEY, STIBEE_LIST_ID } = process.env;
-  if (!STIBEE_API_KEY || !STIBEE_LIST_ID) {
+  const { MAILERLITE_API_KEY, MAILERLITE_GROUP_ID } = process.env;
+  if (!MAILERLITE_API_KEY || !MAILERLITE_GROUP_ID) {
     return send(res, 500, { status: 'error' });
   }
 
@@ -43,31 +43,33 @@ export default async function handler(req, res) {
     return send(res, 400, { status: 'invalid' });
   }
 
-  const endpoint = `https://api.stibee.com/v1/lists/${encodeURIComponent(STIBEE_LIST_ID)}/subscribers`;
+  const endpoint = 'https://connect.mailerlite.com/api/subscribers';
   const payload = {
-    eventOccurredBy: 'SUBSCRIBER',
-    confirmEmailYN: 'N',
-    subscribers: [{ email }],
+    email,
+    groups: [MAILERLITE_GROUP_ID],
+    status: 'active',
   };
 
   try {
     const upstream = await fetch(endpoint, {
       method: 'POST',
       headers: {
-        'AccessToken': STIBEE_API_KEY,
+        'Authorization': `Bearer ${MAILERLITE_API_KEY}`,
         'Content-Type': 'application/json',
+        'Accept': 'application/json',
       },
       body: JSON.stringify(payload),
     });
-    const data = await upstream.json().catch(() => ({}));
 
-    if (upstream.ok && data && data.Ok !== false) {
+    // MailerLite: 201 = 신규 생성, 200 = 이미 존재(업서트).
+    if (upstream.status === 201) {
       return send(res, 200, { status: 'ok' });
     }
-
-    const msg = typeof data?.Message === 'string' ? data.Message : '';
-    if (msg.includes('이미') || upstream.status === 409) {
+    if (upstream.status === 200) {
       return send(res, 409, { status: 'duplicate' });
+    }
+    if (upstream.status === 422) {
+      return send(res, 400, { status: 'invalid' });
     }
     return send(res, 500, { status: 'error' });
   } catch {
