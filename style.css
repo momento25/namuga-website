@@ -17,6 +17,18 @@
   --color-border: #E8DFD5;
   --color-shadow: 20 15 10;
 
+  /* Palette v2 — 헤더/푸터·본문 리듬용. 웜톤 크림 팔레트에 맞춰 조정 */
+  --cream: #FBF7F2;
+  --white: #FFFFFF;
+  --sage: #EDEEE0;
+  --forest: #405A48;       /* 인터랙션(버튼·CTA 카드). forest-deep과 동일 hue family에서 한 단계 밝게 */
+  --forest-hover: #4A6852; /* 버튼 hover */
+  --forest-deep: #33473A;  /* 헤더·푸터 (앵커) */
+  --on-dark: #F5F1E8;
+  --on-dark-muted: rgba(245, 241, 232, 0.75);
+  --on-dark-subtle: rgba(245, 241, 232, 0.6);
+  --on-dark-border: rgba(245, 241, 232, 0.18);
+
   --radius-card: 24px;
   --radius-pill: 9999px;
 
@@ -65,9 +77,13 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
 
 .container-narrow { max-width: 720px; margin: 0 auto; padding-left: var(--container-pad); padding-right: var(--container-pad); }
 
-.section { padding: 80px 0; }
-@media (min-width: 1024px) { .section { padding: 112px 0; } }
+.section { padding: 48px 0; }
+@media (min-width: 1024px) { .section { padding: 80px 0; } }
 
+.section-white { background: var(--white); }
+.section-sage  { background: var(--sage); }
+
+/* 레거시 클래스 — 신규 클래스로 대체 후 참조 없음 */
 .section-band {
   background: var(--color-surface-alt);
   border-top: 1px solid var(--color-border);
@@ -119,8 +135,8 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
 }
 .btn:hover { text-decoration: none; }
 
-.btn-primary { background: var(--color-primary); color: var(--color-primary-fg); }
-.btn-primary:hover { background: var(--color-primary-hover); }
+.btn-primary { background: var(--forest); color: var(--color-primary-fg); }
+.btn-primary:hover { background: var(--forest-hover); }
 
 .btn-outline {
   background: var(--color-surface);
@@ -172,10 +188,19 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(251, 247, 242, 0.85);
-  backdrop-filter: saturate(1.4) blur(12px);
-  -webkit-backdrop-filter: saturate(1.4) blur(12px);
-  border-bottom: 1px solid var(--color-border);
+  background: var(--forest-deep);
+  border-bottom: 1px solid var(--on-dark-border);
+}
+
+/* 헤더 내 CTA 버튼: 반전 (밝은 배경 + 진한 그린 글씨) */
+.site-header .btn-primary {
+  background: var(--cream);
+  color: var(--forest-deep);
+  border-color: transparent;
+}
+.site-header .btn-primary:hover {
+  background: var(--white);
+  color: var(--forest-deep);
 }
 
 .header-inner {
@@ -190,7 +215,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  color: var(--color-text);
+  color: var(--on-dark);
   font-family: var(--font-serif);
   font-weight: 700;
   font-size: 17px;
@@ -209,13 +234,12 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
 }
 
 .nav-desktop a {
-  color: var(--color-text-muted);
+  color: rgba(245, 241, 232, 0.85);
   font-size: 14.5px;
   font-weight: 500;
   transition: color 0.15s;
 }
-.nav-desktop a:hover { color: var(--color-primary); text-decoration: none; }
-.nav-desktop .btn { color: var(--color-primary-fg); }
+.nav-desktop a:hover { color: var(--on-dark); text-decoration: none; }
 
 .nav-toggle {
   display: inline-flex;
@@ -224,7 +248,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
   width: 40px;
   height: 40px;
   border-radius: 12px;
-  color: var(--color-text);
+  color: var(--on-dark);
 }
 @media (min-width: 900px) { .nav-toggle { display: none; } }
 
@@ -233,29 +257,29 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
   flex-direction: column;
   gap: 4px;
   padding: 12px var(--container-pad) 20px;
-  border-top: 1px solid var(--color-border);
-  background: var(--color-bg);
+  border-top: 1px solid var(--on-dark-border);
+  background: var(--forest-deep);
 }
 .nav-mobile[hidden] { display: none; }
 .nav-mobile a {
-  color: var(--color-text);
+  color: var(--on-dark);
   font-size: 16px;
   padding: 12px 4px;
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--on-dark-border);
 }
 .nav-mobile a:last-child { border-bottom: none; margin-top: 8px; text-align: center; }
-.nav-mobile .btn { color: var(--color-primary-fg); }
 
 /* =========================================================
    Footer
    ========================================================= */
 
 .site-footer {
-  background: var(--color-surface-alt);
-  border-top: 1px solid var(--color-border);
+  background: var(--forest-deep);
+  color: var(--on-dark);
   margin-top: 0;
   padding: 64px 0 40px;
 }
+.site-footer .brand { color: var(--on-dark); }
 
 .footer-grid {
   display: grid;
@@ -268,7 +292,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
 }
 
 .footer-desc {
-  color: var(--color-text-muted);
+  color: var(--on-dark-muted);
   font-size: 15px;
   line-height: 1.75;
   margin-top: 16px;
@@ -279,26 +303,26 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
   font-family: var(--font-serif);
   font-size: 15px;
   font-weight: 700;
-  color: var(--color-text);
+  color: var(--on-dark);
   margin-bottom: 16px;
 }
 
 .footer-links { display: flex; flex-direction: column; gap: 10px; }
 .footer-links a {
-  color: var(--color-text-muted);
+  color: var(--on-dark-muted);
   font-size: 14.5px;
 }
-.footer-links a:hover { color: var(--color-primary); text-decoration: none; }
+.footer-links a:hover { color: var(--on-dark); text-decoration: none; }
 
 .footer-bottom {
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid var(--on-dark-border);
   padding-top: 24px;
   display: flex;
   flex-wrap: wrap;
   gap: 8px 16px;
   justify-content: space-between;
   font-size: 13px;
-  color: var(--color-text-muted);
+  color: var(--on-dark-subtle);
 }
 
 /* =========================================================
@@ -611,11 +635,22 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
    CTA block
    ========================================================= */
 
+/* section-head-center가 컨테이너의 유일한 자식(제목만 있는 섹션)인 경우
+   그 아래에 그리드가 없어 64px 하단 여백이 낭비됨 → 제거 */
+.container > .section-head-center:only-child,
+.container-narrow > .section-head-center:only-child { margin-bottom: 0; }
+
+/* CTA 직전 섹션(비전)의 하단 패딩·CTA 상단 패딩 함께 좁힘 */
+.section:has(+ #download) { padding-bottom: 24px; }
+@media (min-width: 1024px) { .section:has(+ #download) { padding-bottom: 40px; } }
+#download { padding-top: 16px; }
+@media (min-width: 1024px) { #download { padding-top: 32px; } }
+
 .cta-block {
-  background: var(--color-primary);
+  background: var(--forest);
   color: var(--color-primary-fg);
   border-radius: 32px;
-  padding: 64px 32px;
+  padding: 48px 32px 40px;
   text-align: center;
 }
 
