@@ -31,6 +31,16 @@ function showSuccess(form) {
 document.querySelectorAll('[data-notify-form]').forEach((form) => {
   const status = form.querySelector('[data-notify-status]');
   const submit = form.querySelector('[data-notify-submit]');
+
+  const emailInput = form.querySelector('input[type="email"]');
+  if (emailInput) {
+    const onFirstFocus = () => {
+      if (window.posthog) window.posthog.capture('notify_form_started');
+      emailInput.removeEventListener('focus', onFirstFocus);
+    };
+    emailInput.addEventListener('focus', onFirstFocus);
+  }
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const email = (form.email.value || '').trim();
@@ -68,13 +78,49 @@ document.querySelectorAll('[data-notify-form]').forEach((form) => {
       } else if (res.status === 400) {
         setStatus(status, '이메일 형식을 확인해 주세요.', true);
       } else {
+        if (window.posthog) window.posthog.capture('notify_signup', { status: 'error' });
         setStatus(status, '잠시 후 다시 시도해 주세요.', true);
       }
-    } catch (_err) {
+    } catch (err) {
+      if (window.posthog) {
+        window.posthog.captureException(err);
+        window.posthog.capture('notify_signup', { status: 'error' });
+      }
       setStatus(status, '잠시 후 다시 시도해 주세요.', true);
     } finally {
       submit.disabled = false;
       submit.textContent = originalLabel;
     }
+  });
+});
+
+// FAQ accordion tracking
+document.querySelectorAll('details.faq-item').forEach((item) => {
+  item.addEventListener('toggle', () => {
+    if (item.open && window.posthog) {
+      const summary = item.querySelector('summary');
+      const question = summary ? summary.textContent.replace(/\s*\+\s*$/, '').trim() : '';
+      window.posthog.capture('faq_item_opened', { question });
+    }
+  });
+});
+
+// Blog post view tracking
+(function () {
+  const m = window.location.pathname.match(/^\/blog\/([^/]+)\//);
+  if (m && window.posthog) {
+    const slug = m[1];
+    const titleEl = document.querySelector('article h1');
+    window.posthog.capture('blog_post_viewed', {
+      slug,
+      title: titleEl ? titleEl.textContent.trim() : slug,
+    });
+  }
+}());
+
+// Support email link tracking
+document.querySelectorAll('a[href^="mailto:"]').forEach((link) => {
+  link.addEventListener('click', () => {
+    if (window.posthog) window.posthog.capture('support_email_clicked');
   });
 });
