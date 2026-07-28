@@ -439,14 +439,6 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
   font-weight: 600;
 }
 
-.hero-float-card .float-meta::before {
-  content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--color-accent);
-}
 
 /* =========================================================
    How it works
