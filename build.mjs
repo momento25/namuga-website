@@ -254,7 +254,7 @@ async function buildBlogIndex(posts) {
     .join('\n');
 
   const body = `
-<main>
+<main class="page-blog">
   <section class="blog-hero">
     <div class="container">
       <span class="section-label">블로그</span>
@@ -298,7 +298,7 @@ async function buildBlogPost(post) {
   };
 
   const body = `
-<main>
+<main class="page-blog">
   <article class="article">
     <div class="container-narrow">
       <a class="article-back" href="{{ROOT}}blog/">← 블로그로 돌아가기</a>

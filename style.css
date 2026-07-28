@@ -675,6 +675,8 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
    Blog
    ========================================================= */
 
+.page-blog { background: var(--white); }
+
 .blog-hero {
   padding: 64px 0 40px;
   text-align: center;
