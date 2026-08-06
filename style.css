@@ -1152,16 +1152,12 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
   animation: float-subtle 4s ease-in-out infinite;
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1),
-              transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
-}
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* .reveal은 IntersectionObserver 훅으로만 사용.
+   섹션 자체에 transform/opacity를 걸면 배경이 함께 이동해 body 배경이
+   섹션 경계에서 띠처럼 드러나므로, 섹션 레벨 애니메이션은 비활성화한다.
+   내부 요소는 .animate-fade-up 또는 .reveal-scale 같은 자체 규칙을 사용. */
+.reveal {}
+.reveal.active {}
 
 .grounding-shadow {
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s ease;
