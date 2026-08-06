@@ -1,6 +1,17 @@
 <div class="hero-cta animate-fade-up" style="animation-delay: 0.4s;">
-  <a class="btn btn-primary btn-lg" href="{{ROOT}}#download" data-ph-capture-attribute-cta="hero_notify">
-    <span aria-hidden="true">🔔</span>
-    <span>출시 알림 받기</span>
-  </a>
+  <div class="download-buttons">
+    <a class="btn-download btn-download-dark" href="{{APP_STORE_URL}}"
+       target="_blank" rel="noopener"
+       data-ph-capture-attribute-cta="hero_app_store"
+       aria-label="App Store에서 다운로드">
+      <span class="btn-download-small">iOS</span>
+      <span class="btn-download-big">아이폰 다운로드</span>
+    </a>
+    <a class="btn-download btn-download-light" href="{{ROOT}}#download"
+       data-ph-capture-attribute-cta="hero_android_notify"
+       aria-label="Android 출시 알림 받기">
+      <span class="btn-download-small">Android는 준비 중</span>
+      <span class="btn-download-big">출시 알림 받기</span>
+    </a>
+  </div>
 </div>

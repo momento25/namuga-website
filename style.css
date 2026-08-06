@@ -348,13 +348,7 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
 }
 
 .hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 9px 18px;
-  border-radius: var(--radius-pill);
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
+  display: inline-block;
   color: var(--color-primary);
   font-weight: 600;
   font-size: 16px;
@@ -567,6 +561,56 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
   height: 6px;
   border-radius: 50%;
   background: var(--color-primary);
+}
+
+/* =========================================================
+   Duo mockups (two phone screens side by side)
+   ========================================================= */
+
+.section-duo .section-head-center { margin-bottom: 48px; }
+@media (min-width: 1024px) { .section-duo { padding-bottom: 112px; } }
+
+.duo-stack {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 64px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+@media (min-width: 768px) {
+  .duo-stack { grid-template-columns: 1fr 1fr; gap: 48px; }
+}
+
+.duo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.duo-item .value-badge { margin-bottom: 14px; }
+.duo-item h3 {
+  font-size: 22px;
+  line-height: 1.35;
+  color: var(--color-text);
+  margin-bottom: 12px;
+}
+.duo-item p {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-text-muted);
+  max-width: 320px;
+}
+
+.duo-mockup {
+  width: 100%;
+  max-width: 360px;
+  margin-top: 28px;
+}
+.duo-mockup img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* =========================================================
@@ -1137,4 +1181,39 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
     transform: none !important;
     opacity: 1 !important;
   }
+}
+
+/* =========================================================
+   How-grid column modifiers (3-card / 5-card layouts)
+   ========================================================= */
+@media (min-width: 1024px) {
+  .how-grid.how-grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .how-grid.how-grid-5 { grid-template-columns: repeat(5, 1fr); }
+}
+
+/* Quote-only how-card (no icon/num/h3) — default white card on sage section */
+.how-grid-quotes .how-card {
+  min-height: 0;
+  display: flex;
+  align-items: center;
+}
+.how-grid-quotes .how-card .float-quote {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* Duo mockup hover scale-up (matches .grounding-shadow interaction) */
+.duo-mockup {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  transform-origin: center;
+}
+.duo-mockup:hover {
+  transform: scale(1.05);
+}
+@media (prefers-reduced-motion: reduce) {
+  .duo-mockup { transition: none !important; }
+  .duo-mockup:hover { transform: none !important; }
 }
