@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css">
+  <link rel="stylesheet" href="{{ROOT}}style.css">
+  <meta name="theme-color" content="#FBF7F2">
+  <title>초대장 — 나무가 나뭇가지에게</title>
+  <meta name="description" content="나무가 나뭇가지에게 앱 초대장입니다.">
+  <meta name="robots" content="noindex, nofollow">
+</head>
+<body>
+
+<!-- @include:header -->
+
+  <main class="doc-main">
+    <div class="wrap">
+      <div class="invite-body">
+
+        <p class="invite-label">초대장</p>
+        <h1 class="doc-title">가족이 '나무가 나뭇가지에게'로<br>초대했어요</h1>
+        <p class="invite-desc">
+          앱을 설치하고 이 링크를 다시 누르면<br>
+          가족과 연결돼요.
+        </p>
+
+        <div class="invite-action">
+          <a id="btn-install" class="btn btn-primary btn-lg" href="#">앱 설치하기</a>
+        </div>
+
+        <div class="invite-action">
+          <a id="btn-open" class="btn btn-outline btn-lg" href="#">앱에서 열기</a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+<!-- @include:footer -->
+
+<script>
+(function () {
+  var parts = window.location.pathname.replace(/\/$/, '').split('/');
+  var token = parts[parts.length - 1] || '';
+
+  if (token && token !== 'invite') {
+    document.getElementById('btn-open').href = 'tree-to-branch-v2://invite/' + encodeURIComponent(token);
+  } else {
+    document.getElementById('btn-open').style.display = 'none';
+  }
+
+  var install = document.getElementById('btn-install');
+  install.href = /android/i.test(navigator.userAgent) ? '{{PLAY_STORE_URL}}' : '{{APP_STORE_URL}}';
+}());
+</script>
+
+</body>
+</html>

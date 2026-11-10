@@ -1,0 +1,10 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["535GUKWS7T.com.momentohouse.treetobranch"],
+        "components": [{ "/": "/invite/*" }]
+      }
+    ]
+  }
+}

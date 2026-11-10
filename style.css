@@ -950,14 +950,15 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
   margin-bottom: 10px;
 }
 
-.doc-section ul { padding-left: 22px; margin: 8px 0 12px; }
-.doc-section ul li {
+.doc-section ul, .doc-section ol { padding-left: 22px; margin: 8px 0 12px; }
+.doc-section ul li, .doc-section ol li {
   font-size: 15.5px;
   color: var(--color-text);
   line-height: 1.85;
   margin-bottom: 6px;
 }
 
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
 .doc-section table { width: 100%; border-collapse: collapse; font-size: 14.5px; margin-top: 12px; }
 .doc-section th, .doc-section td {
   padding: 12px 14px;
@@ -1035,6 +1036,15 @@ h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; line-height: 1.25
   text-align: center;
   opacity: 0.8;
 }
+
+/* Invite page */
+.invite-body { max-width: 480px; margin: 0 auto; text-align: center; padding: 16px 0; }
+.invite-label { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--color-text-muted); margin-bottom: 20px; }
+.invite-body .doc-title { margin-bottom: 20px; }
+.invite-desc { font-size: 17px; line-height: 1.75; color: var(--color-text-muted); margin-bottom: 36px; }
+.invite-action { display: flex; justify-content: center; margin-bottom: 20px; }
+.invite-action .btn { width: 100%; max-width: 320px; justify-content: center; }
+.invite-hint { font-size: 14px; color: var(--color-text-muted); line-height: 1.65; margin-bottom: 20px; }
 
 /* Utility */
 .sr-only {

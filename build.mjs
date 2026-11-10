@@ -419,6 +419,7 @@ async function main() {
   if (existsSync(IMAGES_DIR)) {
     await copyTree(IMAGES_DIR, path.join(DIST, 'images'));
   }
+  await copyTree(path.join(ROOT, 'well-known'), path.join(DIST, '.well-known'));
 
   console.log('▸ Building HTML pages');
   await buildSourceHtml();
